@@ -13,44 +13,112 @@
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #ffffff;
-            color: #1f2937;
+            background-color: #fafaf9;
+            color: #1c1917;
             overflow-x: hidden;
         }
+        
         .gold-gradient {
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 40%, #b45309 100%);
         }
-        .text-gold {
-            color: #b45309;
+        
+        .gold-text {
+            background: linear-gradient(135deg, #f59e0b, #b45309);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+        
+        .saffron-gradient {
+            background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+        }
+        
         .hero-glow {
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            background: radial-gradient(ellipse at 30% 20%, rgba(245, 158, 11, 0.18) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(217, 119, 6, 0.12) 0%, transparent 50%);
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(180, 83, 9, 0.18);
+        }
+        
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-shine:hover::after {
+            left: 100%;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+        }
+        
+        .img-cover {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-stone-50 text-stone-800">
 
     <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-xs border-b border-gray-100">
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-amber-100/50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-full border-2 border-amber-500 flex items-center justify-center bg-amber-50 font-bold text-amber-700 text-lg shadow-xs">
+                <div class="w-12 h-12 rounded-full gold-gradient text-white flex items-center justify-center font-black text-xl shadow-lg shadow-amber-500/30">
                     زر
                 </div>
                 <div>
-                    <h1 class="font-black text-xl text-gray-900 tracking-wider">زاران</h1>
-                    <span class="text-xs text-amber-600 font-medium">zaaraan.official</span>
+                    <h1 class="font-black text-xl text-stone-900 tracking-wider">زاران</h1>
+                    <span class="text-xs text-amber-600 font-bold">zaaraan..official</span>
                 </div>
             </div>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-                <a href="#hero" class="hover:text-amber-600 transition">صفحه اصلی</a>
-                <a href="#products" class="hover:text-amber-600 transition">محصولات ناب</a>
-                <a href="#gallery" class="hover:text-amber-600 transition">گالری محصولات</a>
-                <a href="#features" class="hover:text-amber-600 transition">چرا زاران؟</a>
-                <a href="#reviews" class="hover:text-amber-600 transition">رضایت مشتریان</a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
+                <a href="#hero" class="hover:text-amber-600 transition relative after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-0.5 after:bg-amber-500 after:transition-all hover:after:w-full">صفحه اصلی</a>
+                <a href="#products" class="hover:text-amber-600 transition relative after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-0.5 after:bg-amber-500 after:transition-all hover:after:w-full">محصولات ناب</a>
+                <a href="#features" class="hover:text-amber-600 transition relative after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-0.5 after:bg-amber-500 after:transition-all hover:after:w-full">چرا زاران؟</a>
+                <a href="#reviews" class="hover:text-amber-600 transition relative after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-0.5 after:bg-amber-500 after:transition-all hover:after:w-full">رضایت مشتریان</a>
             </nav>
+            
             <div>
-                <a href="https://t.me/zaaarrraaan" target="_blank" class="gold-gradient text-white px-6 py-2.5 rounded-full font-medium text-sm shadow-md hover:opacity-90 transition transform hover:scale-105">
+                <a href="https://t.me/zaaarrraaan" target="_blank" 
+                   class="gold-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 transition transform hover:scale-105 btn-shine">
                     خرید از تلگرام
                 </a>
             </div>
@@ -58,36 +126,89 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden">
+    <section id="hero" class="relative pt-32 pb-28 md:pt-40 md:pb-36 overflow-hidden">
         <div class="absolute inset-0 hero-glow pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
-            <div class="space-y-6 text-center md:text-right" data-aos="fade-left" data-aos-duration="1000">
-                <span class="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full">
-                    <span>🌾</span> محصولات باغ پدری با ضمانت خلوص کالا
+        
+        <!-- Decorative blobs -->
+        <div class="absolute top-40 left-10 w-72 h-72 bg-amber-200/25 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-orange-200/20 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
+            
+            <!-- Text Content -->
+            <div class="space-y-7 text-center md:text-right" data-aos="fade-left" data-aos-duration="1000">
+                <span class="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold px-4 py-2 rounded-full shadow-sm">
+                    <span class="text-base">🌾</span> محصولات باغ پدری با ضمانت خلوص کالا
                 </span>
-                <h1 class="text-4xl md:text-6xl font-black text-gray-900 leading-tight">
-                    عطر و طعم اصالت با <span class="text-amber-600">زعفران و خشکبار زاران</span>
+                
+                <h1 class="text-4xl md:text-6xl font-black text-stone-900 leading-tight">
+                    عطر و طعم اصالت با
+                    <span class="gold-text">زعفران و خشکبار زاران</span>
                 </h1>
-                <p class="text-gray-600 text-lg leading-relaxed">
+                
+                <p class="text-stone-600 text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
                     زاران یک برند خانوادگی‌ست؛ بیش از ۳ سال است که با عشق، محصولات اصیل باغ پدری را با بالاترین کیفیت و تحویل سریع به خانه‌های شما می‌رسانیم.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
-                    <a href="#products" class="gold-gradient text-white text-center px-8 py-4 rounded-xl font-bold shadow-lg shadow-amber-600/20 hover:scale-105 transition">
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-3">
+                    <a href="#products" 
+                       class="gold-gradient text-white text-center px-8 py-4 rounded-2xl font-bold shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105 transition btn-shine">
                         مشاهده محصولات و قیمت
                     </a>
-                    <a href="https://t.me/zaaarrraaan" target="_blank" class="border-2 border-gray-200 hover:border-amber-600 text-gray-700 hover:text-amber-600 text-center px-8 py-4 rounded-xl font-bold transition">
+                    <a href="https://t.me/zaaarrraaan" target="_blank" 
+                       class="bg-white border-2 border-stone-200 hover:border-amber-500 text-stone-700 hover:text-amber-700 text-center px-8 py-4 rounded-2xl font-bold transition shadow-sm hover:shadow-md">
                         ارتباط مستقیم در تلگرام
                     </a>
                 </div>
+                
+                <!-- Trust badges -->
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-6 pt-6 text-sm text-stone-500">
+                    <div class="flex items-center gap-2">
+                        <span class="text-amber-500 text-lg">✓</span>
+                        <span>ضمانت اصالت</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-amber-500 text-lg">✓</span>
+                        <span>ارسال سریع</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-amber-500 text-lg">✓</span>
+                        <span>+۳ سال سابقه</span>
+                    </div>
+                </div>
             </div>
             
+            <!-- Hero Image Card -->
             <div class="relative flex justify-center" data-aos="fade-right" data-aos-duration="1000">
-                <div class="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white group">
-                    <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f1?q=80&w=800&auto=format&fit=crop" alt="زعفران اعلای زاران" class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
-                        <div class="text-white">
-                            <span class="bg-amber-500 text-xs font-bold px-2.5 py-1 rounded-md">پرفروش‌ترین</span>
-                            <h3 class="text-xl font-bold mt-2">زعفران سرگل ممتاز دستچین</h3>
+                <div class="relative w-full max-w-md">
+                    <!-- Glow -->
+                    <div class="absolute -inset-4 bg-gradient-to-br from-amber-300/50 to-orange-400/30 rounded-[2.5rem] blur-2xl"></div>
+                    
+                    <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-100 group">
+                        <div class="absolute top-5 right-5 z-20 bg-gradient-to-l from-amber-600 to-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md">
+                            🔥 پرفروش‌ترین
+                        </div>
+                        
+                        <!-- Main Hero Image -->
+                        <div class="relative h-72 md:h-80 overflow-hidden">
+                            <img 
+                                src="https://images.pexels.com/photos/10487658/pexels-photo-10487658.jpeg?auto=compress&cs=tinysrgb&w=900" 
+                                alt="زعفران سرگل ممتاز دستچین زاران"
+                                class="img-cover transition duration-700 group-hover:scale-110"
+                                loading="eager">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                        </div>
+                        
+                        <div class="p-7 text-center">
+                            <h3 class="text-2xl font-black text-stone-900">زعفران سرگل ممتاز دستچین</h3>
+                            <p class="text-amber-800 text-sm font-medium mt-2">خلوص ۱۰۰٪ تضمینی • عطر و رنگ فوق‌العاده</p>
+                            
+                            <div class="mt-6">
+                                <a href="https://t.me/zaaarrraaan" target="_blank" 
+                                   class="inline-block bg-stone-900 text-white text-sm px-8 py-3.5 rounded-2xl font-bold hover:bg-amber-600 transition shadow-lg btn-shine">
+                                    استعلام قیمت و سفارش
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -96,68 +217,101 @@
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="py-24 bg-gray-50/50" data-aos="fade-up">
+    <section id="products" class="py-28 bg-white relative">
+        <div class="absolute top-0 left-0 right-0 section-divider"></div>
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-amber-600 font-bold text-sm tracking-widest uppercase">ویترین محصولات</span>
-                <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2">گلچین محصولات خالص و اعلا</h2>
-                <p class="text-gray-500 mt-3">تهیه شده مستقیماً از باغات منتخب با ضمانت بازگشت وجه در صورت نارضایتی</p>
+            <div class="text-center max-w-2xl mx-auto mb-20" data-aos="fade-up">
+                <span class="inline-block text-amber-600 font-bold text-sm tracking-widest uppercase bg-amber-50 px-4 py-1.5 rounded-full">ویترین محصولات</span>
+                <h2 class="text-3xl md:text-5xl font-black text-stone-900 mt-5">گلچین محصولات خالص و اعلا</h2>
+                <p class="text-stone-500 mt-4 text-lg">تهیه شده مستقیماً از باغات منتخب با ضمانت بازگشت وجه در صورت نارضایتی</p>
             </div>
-
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-white rounded-3xl border border-gray-100 shadow-xl shadow-gray-100 overflow-hidden hover:-translate-y-2 transition duration-300 group" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="relative h-72 overflow-hidden bg-amber-50">
-                        <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f1?q=80&w=800&auto=format&fit=crop" alt="زعفران زاران" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-xs text-amber-800 text-xs font-bold px-3 py-1 rounded-full shadow-xs">زعفران خالص</span>
+                
+                <!-- Card 1 - Saffron -->
+                <div class="bg-white rounded-3xl border border-stone-100 shadow-xl card-hover overflow-hidden flex flex-col group" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="relative h-56 overflow-hidden">
+                        <img 
+                            src="https://images.unsplash.com/photo-1756363886854-b51467278a52?w=800&q=80&auto=format&fit=crop" 
+                            alt="زعفران نگین و سرگل خالص"
+                            class="img-cover transition duration-700 group-hover:scale-110"
+                            loading="lazy">
+                        <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full">
+                            زعفران خالص
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900">زعفران نگین و سرگل</h3>
-                        <p class="text-gray-500 text-sm mt-3 leading-relaxed">عطر فوق‌العاده، رنگ‌دهی عمیق و ماندگار. مناسب برای مصارف خانگی، رستوران‌ها و صادرات.</p>
-                        <div class="mt-8 flex items-center justify-between pt-4 border-t border-gray-100">
-                            <div>
-                                <span class="text-xs text-gray-400 block">کیفیت تضمینی</span>
-                                <span class="text-base font-black text-amber-700">استعلام قیمت روز</span>
-                            </div>
-                            <a href="https://t.me/zaaarrraaan" target="_blank" class="bg-gray-900 text-white text-sm px-5 py-2.5 rounded-xl font-medium hover:bg-amber-600 transition">سفارش سریع</a>
+                    
+                    <div class="p-7 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-stone-900">زعفران نگین و سرگل</h3>
+                        <p class="text-stone-500 text-sm mt-3 leading-relaxed flex-grow">
+                            عطر فوق‌العاده، رنگ‌دهی عمیق و ماندگار. مناسب برای مصارف خانگی، رستوران‌ها و صادرات.
+                        </p>
+                        
+                        <div class="mt-6 pt-5 border-t border-stone-100 flex items-center justify-between">
+                            <span class="text-sm font-black text-amber-700 bg-amber-50 px-3 py-1 rounded-lg">کیفیت صادراتی</span>
+                            <a href="https://t.me/zaaarrraaan" target="_blank" 
+                               class="bg-stone-900 text-white text-sm px-5 py-2.5 rounded-xl font-medium hover:bg-amber-600 transition shadow-md">
+                                سفارش سریع
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white rounded-3xl border border-gray-100 shadow-xl shadow-gray-100 overflow-hidden hover:-translate-y-2 transition duration-300 group" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="relative h-72 overflow-hidden bg-amber-50">
-                        <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?q=80&w=800&auto=format&fit=crop" alt="نبات زعفرانی زاران" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-xs text-amber-800 text-xs font-bold px-3 py-1 rounded-full shadow-xs">نبات و شیرینی</span>
+                
+                <!-- Card 2 - Nabat -->
+                <div class="bg-white rounded-3xl border border-stone-100 shadow-xl card-hover overflow-hidden flex flex-col group" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="relative h-56 overflow-hidden">
+                        <img 
+                            src="https://images.unsplash.com/photo-1645634348958-4786fc5612f5?w=800&q=80&auto=format&fit=crop" 
+                            alt="نبات زعفرانی و زنجبیلی"
+                            class="img-cover transition duration-700 group-hover:scale-110"
+                            loading="lazy">
+                        <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full">
+                            نبات و شیرینی
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900">نبات زعفرانی و زنجبیلی</h3>
-                        <p class="text-gray-500 text-sm mt-3 leading-relaxed">تولید شده با زعفران اصیل و شکر درجه یک، کاملاً طبیعی و بدون هیچ‌گونه مواد افزودنی صنعتی.</p>
-                        <div class="mt-8 flex items-center justify-between pt-4 border-t border-gray-100">
-                            <div>
-                                <span class="text-xs text-gray-400 block">بسته‌بندی بهداشتی</span>
-                                <span class="text-base font-black text-amber-700">استعلام قیمت روز</span>
-                            </div>
-                            <a href="https://t.me/zaaarrraaan" target="_blank" class="bg-gray-900 text-white text-sm px-5 py-2.5 rounded-xl font-medium hover:bg-amber-600 transition">سفارش سریع</a>
+                    
+                    <div class="p-7 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-stone-900">نبات زعفرانی و زنجبیلی</h3>
+                        <p class="text-stone-500 text-sm mt-3 leading-relaxed flex-grow">
+                            تولید شده با زعفران اصیل و شکر درجه یک، کاملاً طبیعی و بدون هیچ‌گونه مواد افزودنی صنعتی.
+                        </p>
+                        
+                        <div class="mt-6 pt-5 border-t border-stone-100 flex items-center justify-between">
+                            <span class="text-sm font-black text-amber-700 bg-amber-50 px-3 py-1 rounded-lg">بسته‌بندی بهداشتی</span>
+                            <a href="https://t.me/zaaarrraaan" target="_blank" 
+                               class="bg-stone-900 text-white text-sm px-5 py-2.5 rounded-xl font-medium hover:bg-amber-600 transition shadow-md">
+                                سفارش سریع
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white rounded-3xl border border-gray-100 shadow-xl shadow-gray-100 overflow-hidden hover:-translate-y-2 transition duration-300 group" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="relative h-72 overflow-hidden bg-amber-50">
-                        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=800&auto=format&fit=crop" alt="زرشک و خشکبار زاران" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-xs text-amber-800 text-xs font-bold px-3 py-1 rounded-full shadow-xs">خشکبار و ادویه</span>
+                
+                <!-- Card 3 - Dried Fruits -->
+                <div class="bg-white rounded-3xl border border-stone-100 shadow-xl card-hover overflow-hidden flex flex-col group" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img 
+                            src="https://images.pexels.com/photos/18465069/pexels-photo-18465069.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                            alt="زرشک پفکی و عناب اعلا"
+                            class="img-cover transition duration-700 group-hover:scale-110"
+                            loading="lazy">
+                        <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full">
+                            خشکبار و ادویه
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900">زرشک پفکی و عناب اعلا</h3>
-                        <p class="text-gray-500 text-sm mt-3 leading-relaxed">زرشک تازه و پفکی خراسان همراه با عناب درشت، گوشتی و شیرین؛ گلچین‌شده از بهترین باغات.</p>
-                        <div class="mt-8 flex items-center justify-between pt-4 border-t border-gray-100">
-                            <div>
-                                <span class="text-xs text-gray-400 block">محصول دستچین</span>
-                                <span class="text-base font-black text-amber-700">استعلام قیمت روز</span>
-                            </div>
-                            <a href="https://t.me/zaaarrraaan" target="_blank" class="bg-gray-900 text-white text-sm px-5 py-2.5 rounded-xl font-medium hover:bg-amber-600 transition">سفارش سریع</a>
+                    
+                    <div class="p-7 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-stone-900">زرشک پفکی و عناب اعلا</h3>
+                        <p class="text-stone-500 text-sm mt-3 leading-relaxed flex-grow">
+                            زرشک تازه و پفکی خراسان همراه با عناب درشت، گوشتی و شیرین؛ گلچین‌شده از بهترین باغات.
+                        </p>
+                        
+                        <div class="mt-6 pt-5 border-t border-stone-100 flex items-center justify-between">
+                            <span class="text-sm font-black text-amber-700 bg-amber-50 px-3 py-1 rounded-lg">محصول دستچین</span>
+                            <a href="https://t.me/zaaarrraaan" target="_blank" 
+                               class="bg-stone-900 text-white text-sm px-5 py-2.5 rounded-xl font-medium hover:bg-amber-600 transition shadow-md">
+                                سفارش سریع
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -165,93 +319,108 @@
         </div>
     </section>
 
-    <!-- Gallery Visual Section -->
-    <section id="gallery" class="py-24 bg-white" data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-amber-600 font-bold text-sm tracking-widest uppercase">تصاویر محصولات</span>
-                <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2">کیفیت را در جزئیات ببینید</h2>
+    <!-- Features Section with Field Background -->
+    <section id="features" class="py-28 relative overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img 
+                src="https://images.pexels.com/photos/36426519/pexels-photo-36426519.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+                alt="مزرعه زعفران"
+                class="w-full h-full object-cover opacity-20"
+                loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-b from-amber-50/90 via-amber-50/80 to-stone-50/95"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-black text-stone-900">چرا زاران را انتخاب می‌کنند؟</h2>
             </div>
+            
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg h-72 group relative">
-                    <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f1?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="زعفران">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 text-white font-bold">زعفران دستچین اعلا</div>
+                <div class="p-8 bg-white/90 backdrop-blur rounded-3xl shadow-lg border border-amber-100/60 text-center card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 text-amber-700 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        🛡️
+                    </div>
+                    <h4 class="font-bold text-stone-900 text-lg">ضمانت خلوص کالا</h4>
+                    <p class="text-stone-500 text-sm mt-3 leading-relaxed">تضمین ۱۰۰٪ اصالت و کیفیت تمام محصولات عرضه شده.</p>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-lg h-72 group relative">
-                    <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="نبات">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 text-white font-bold">نبات زعفرانی سنتی</div>
+                
+                <div class="p-8 bg-white/90 backdrop-blur rounded-3xl shadow-lg border border-amber-100/60 text-center card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 text-amber-700 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        ⚡
+                    </div>
+                    <h4 class="font-bold text-stone-900 text-lg">تحویل سریع</h4>
+                    <p class="text-stone-500 text-sm mt-3 leading-relaxed">ارسال ایمن و سریع سفارشات به سراسر کشور.</p>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-lg h-72 group relative">
-                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="خشکبار">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 text-white font-bold">زرشک پفکی درجه یک</div>
+                
+                <div class="p-8 bg-white/90 backdrop-blur rounded-3xl shadow-lg border border-amber-100/60 text-center card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 text-amber-700 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        🌱
+                    </div>
+                    <h4 class="font-bold text-stone-900 text-lg">محصول باغ پدری</h4>
+                    <p class="text-stone-500 text-sm mt-3 leading-relaxed">بی‌واسطه و با عشق از زمین کشاورزی به دست شما می‌رسد.</p>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-lg h-72 group relative">
-                    <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="ادویه">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 text-white font-bold">ادویه‌جات خالص خانگی</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-24 bg-amber-50/40" data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                <div class="p-8 bg-white rounded-3xl shadow-sm border border-amber-100/80" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl mb-6 font-bold">💎</div>
-                    <h4 class="font-bold text-gray-900 text-lg">ضمانت خلوص کالا</h4>
-                    <p class="text-gray-500 text-sm mt-3">تضمین ۱۰۰٪ اصالت و کیفیت تمام محصولات عرضه شده.</p>
-                </div>
-                <div class="p-8 bg-white rounded-3xl shadow-sm border border-amber-100/80" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl mb-6 font-bold">🚀</div>
-                    <h4 class="font-bold text-gray-900 text-lg">تحویل سریع</h4>
-                    <p class="text-gray-500 text-sm mt-3">ارسال ایمن و سریع سفارشات به سراسر کشور.</p>
-                </div>
-                <div class="p-8 bg-white rounded-3xl shadow-sm border border-amber-100/80" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl mb-6 font-bold">🌿</div>
-                    <h4 class="font-bold text-gray-900 text-lg">محصول باغ پدری</h4>
-                    <p class="text-gray-500 text-sm mt-3">بی‌واسطه و با عشق از زمین کشاورزی به دست شما می‌رسد.</p>
-                </div>
-                <div class="p-8 bg-white rounded-3xl shadow-sm border border-amber-100/80" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl mb-6 font-bold">⭐</div>
-                    <h4 class="font-bold text-gray-900 text-lg">۳ سال سابقه</h4>
-                    <p class="text-gray-500 text-sm mt-3">افتخار همراهی با هزاران مشتری وفادار در سراسر ایران.</p>
+                
+                <div class="p-8 bg-white/90 backdrop-blur rounded-3xl shadow-lg border border-amber-100/60 text-center card-hover" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 text-amber-700 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        ⭐
+                    </div>
+                    <h4 class="font-bold text-stone-900 text-lg">۳ سال سابقه</h4>
+                    <p class="text-stone-500 text-sm mt-3 leading-relaxed">افتخار همراهی با هزاران مشتری وفادار در سراسر ایران.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="py-24 bg-white" data-aos="fade-up">
+    <section id="reviews" class="py-28 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-amber-600 font-bold text-sm tracking-widest uppercase">مشتریان ما</span>
-                <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2">رضایت شما، افتخار ماست</h2>
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <span class="inline-block text-amber-600 font-bold text-sm tracking-widest uppercase bg-amber-50 px-4 py-1.5 rounded-full">مشتریان ما</span>
+                <h2 class="text-3xl md:text-5xl font-black text-stone-900 mt-5">رضایت شما، افتخار ماست</h2>
             </div>
-
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 shadow-xs" data-aos="fade-left">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-14 h-14 rounded-full bg-amber-200 flex items-center justify-center font-bold text-amber-800 text-lg">م</div>
+                <!-- Review 1 -->
+                <div class="p-8 rounded-3xl bg-gradient-to-br from-stone-50 to-amber-50/40 border border-stone-100 shadow-lg relative overflow-hidden" data-aos="fade-left">
+                    <div class="absolute top-4 left-6 text-6xl text-amber-200/50 font-serif leading-none">“</div>
+                    
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-amber-300 to-orange-400 flex items-center justify-center font-bold text-white text-lg shadow-md">
+                            م
+                        </div>
                         <div>
-                            <h4 class="font-bold text-gray-900 text-lg">مریم رضایی</h4>
-                            <span class="text-xs text-amber-600 font-medium">خرید زعفران سرگل</span>
+                            <h4 class="font-bold text-stone-900 text-lg">مریم رضایی</h4>
+                            <div class="flex items-center gap-1 mt-1">
+                                <span class="text-amber-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-amber-600 font-medium mr-2">خرید زعفران سرگل</span>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 text-base leading-relaxed">
+                    
+                    <p class="text-stone-600 text-base leading-relaxed relative z-10">
                         «عطر زعفران فوق‌العاده بود. هم بسته‌بندی تمیز و شیکی داشت و هم بسیار سریع به دستم رسید. ممنون از صداقت و کیفیت خوبتون.»
                     </p>
                 </div>
-
-                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 shadow-xs" data-aos="fade-right">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-14 h-14 rounded-full bg-amber-200 flex items-center justify-center font-bold text-amber-800 text-lg">ع</div>
+                
+                <!-- Review 2 -->
+                <div class="p-8 rounded-3xl bg-gradient-to-br from-stone-50 to-amber-50/40 border border-stone-100 shadow-lg relative overflow-hidden" data-aos="fade-right">
+                    <div class="absolute top-4 left-6 text-6xl text-amber-200/50 font-serif leading-none">“</div>
+                    
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to--br from-amber-300 to-orange-400 flex items-center justify-center font-bold text-white text-lg shadow-md">
+                            ع
+                        </div>
                         <div>
-                            <h4 class="font-bold text-gray-900 text-lg">علی کریمی</h4>
-                            <span class="text-xs text-amber-600 font-medium">خرید نبات زعفرانی</span>
+                            <h4 class="font-bold text-stone-900 text-lg">علی کریمی</h4>
+                            <div class="flex items-center gap-1 mt-1">
+                                <span class="text-amber-400 text-sm">★★★★★</span>
+                                <span class="text-xs text-amber-600 font-medium mr-2">خرید نبات زعفرانی</span>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 text-base leading-relaxed">
+                    
+                    <p class="text-stone-600 text-base leading-relaxed relative z-10">
                         «نبات‌ها کیفیت بی‌نظیری داشتند و معلوم بود با زعفران اصل تهیه شدن. طعم و رنگش عالی بود، حتماً دوباره سفارش خواهم داد.»
                     </p>
                 </div>
@@ -259,31 +428,54 @@
         </div>
     </section>
 
+    <!-- Final CTA Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 gold-gradient opacity-95"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10" data-aos="zoom-in">
+            <h2 class="text-3xl md:text-4xl font-black text-white mb-6">آماده تجربه طعم اصالت هستید؟</h2>
+            <p class="text-amber-100 text-lg mb-10 max-w-2xl mx-auto">همین حالا در تلگرام پیام بدید و از محصولات ناب زاران با ضمانت کیفیت سفارش بدید.</p>
+            
+            <a href="https://t.me/zaaarrraaan" target="_blank" 
+               class="inline-flex items-center gap-3 bg-white text-amber-700 px-10 py-5 rounded-2xl font-black text-lg shadow-2xl hover:scale-105 transition transform">
+                <span>ورود به کانال تلگرام</span>
+                <span class="text-2xl">←</span>
+            </a>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full border-2 border-amber-500 flex items-center justify-center bg-amber-500 font-bold text-gray-900 text-base">
-                    زر
+    <footer class="bg-stone-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-full gold-gradient flex items-center justify-center font-black text-stone-900 text-xl shadow-lg">
+                        زر
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl">زاران (zaaraan.official)</h3>
+                        <p class="text-sm text-stone-400 mt-1">زعفران اصل | خشکبار و ادویه خالص</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-bold text-xl">زاران (zaaraan.official)</h3>
-                    <p class="text-xs text-gray-400 mt-1">زعفران اصل | خشکبار و ادویه خالص</p>
+                
+                <div class="text-center md:text-left text-sm text-stone-400 space-y-3">
+                    <p>
+                        ارتباط با ما در تلگرام: 
+                        <a href="https://t.me/zaaarrraaan" target="_blank" class="text-amber-400 font-bold hover:underline">t.me/zaaarrraaan</a>
+                    </p>
+                    <p class="text-stone-500">تمامی حقوق برای برند خانوادگی زاران محفوظ است © ۱۴۰۵</p>
                 </div>
-            </div>
-            <div class="text-center md:text-right text-sm text-gray-400 space-y-2">
-                <p>ارتباط با ما در تلگرام: <a href="https://t.me/zaaarrraaan" target="_blank" class="text-amber-400 font-bold hover:underline">t.me/zaaarrraaan</a></p>
-                <p>تمامی حقوق برای برند خانوادگی زاران محفوظ است © ۱۴۰۵</p>
             </div>
         </div>
     </footer>
 
-    <!-- AOS Script for Animations -->
+    <!-- AOS Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
             duration: 800,
             once: true,
+            offset: 80,
         });
     </script>
 </body>
